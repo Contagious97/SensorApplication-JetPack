@@ -5,3 +5,5 @@ using Bluetooth LE. The interesting part is in the DeviceActivity, and especiall
 
 NB! The Movsense device must be updated with the Movesense-gatt_sensordata_app_w_bootloader DFU file.
 You find this file on the course webb.
+
+This example builds on the BLE examples at developer.android.com.
