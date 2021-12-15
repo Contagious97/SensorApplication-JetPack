@@ -15,6 +15,13 @@
         android:gravity="center_horizontal|center_vertical"
         android:padding="5sp"
         android:text="@string/scan_movesense_devices" />
+    <Button
+        android:id="@+id/change_activity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal|center_vertical"
+        android:padding="5sp"
+        android:text="@string/change_activity" />
 
     <TextView
         android:id="@+id/scan_info"

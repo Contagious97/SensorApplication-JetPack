@@ -16,7 +16,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="5sp"
-        android:text="@string/no_device"
+        android:text="@string/phone_device"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
@@ -28,26 +28,24 @@
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
-        android:id="@+id/comPitch_view"
+        android:id="@+id/acc_and_gyro_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="5sp"
-        android:text="@string/no_shown_data"
+        android:text="@string/no_data"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <TextView
-        android:id="@+id/accPitch_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="5sp"
-        android:text="@string/no_shown_data"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
     <Button
-        android:id="@+id/record_button"
+        android:id="@+id/start_record_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal|center_vertical"
         android:padding="5sp"
-        android:onClick="startRecording"
         android:text="@string/start_record" />
+
+    <com.jjoe64.graphview.GraphView
+        android:id="@+id/graphView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
 </LinearLayout>

@@ -76,6 +76,15 @@ public class ScanActivity extends AppCompatActivity {
             }
         });
 
+        Button changeActivityButton = findViewById(R.id.change_activity);
+        changeActivityButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ScanActivity.this, DeviceSensorActivity.class);
+                startActivity(intent);
+            }
+        });
+
         // more ui stuff, the recycler view
         RecyclerView recyclerView = findViewById(R.id.scan_list_view);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
@@ -167,7 +176,6 @@ public class ScanActivity extends AppCompatActivity {
                 }, SCAN_PERIOD);
 
                 mScanning = true;
-                // TODO: Add a filter, e.g. for heart rate service, scan settings
                 scanner.startScan(mScanCallback);
                 mScanInfoView.setText(R.string.no_devices_found);
                 showToast("BLE scan started", this);

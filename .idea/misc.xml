@@ -10,10 +10,13 @@
       <map>
         <entry key="..\:/AndroidStudioProjects/Movesense20/app/src/main/res/layout/activity_scan.xml" value="0.2359375" />
         <entry key="..\:/AndroidStudioProjects/Movesense20/app/src/main/res/layout/scan_res_item.xml" value="0.2359375" />
+        <entry key="..\:/Users/Moham/AndroidStudioProjects/MovesenseAndroid/app/src/main/res/layout/activity_device_sensor.xml" value="0.1" />
+        <entry key="..\:/Users/Moham/StudioProjects/MovesenseAndroid/app/src/main/res/layout/activity_device.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/Moham/StudioProjects/MovesenseAndroid/app/src/main/res/layout/activity_device_sensor.xml" value="0.20520833333333333" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_12" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="15" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
