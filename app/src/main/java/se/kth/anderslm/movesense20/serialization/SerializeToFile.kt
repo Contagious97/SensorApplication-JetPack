@@ -1,48 +1,80 @@
-package se.kth.anderslm.movesense20.serialization;
+package se.kth.anderslm.movesense20.serialization
 
-import android.os.Environment;
-import android.util.Log;
+import se.kth.anderslm.movesense20.serialization.DeserializeFromFile
+import se.kth.anderslm.movesense20.models.AnglePoint
+import se.kth.anderslm.movesense20.serialization.SerializeToFile
+import com.google.gson.Gson
+import android.bluetooth.BluetoothDevice
+import se.kth.anderslm.movesense20.uiutils.BtDeviceAdapter.IOnItemSelectedCallBack
+import androidx.recyclerview.widget.RecyclerView
+import android.widget.TextView
+import android.view.ViewGroup
+import android.view.LayoutInflater
+import se.kth.anderslm.movesense20.R
+import android.widget.Toast
+import android.content.DialogInterface
+import androidx.appcompat.app.AppCompatActivity
+import android.bluetooth.BluetoothGatt
+import android.os.Bundle
+import android.content.Intent
+import se.kth.anderslm.movesense20.ScanActivity
+import se.kth.anderslm.movesense20.uiutils.MsgUtils
+import android.os.Environment
+import se.kth.anderslm.movesense20.DeviceActivity
+import android.content.pm.PackageManager
+import android.bluetooth.BluetoothGattCallback
+import android.bluetooth.BluetoothProfile
+import android.bluetooth.BluetoothGattService
+import android.bluetooth.BluetoothGattCharacteristic
+import android.bluetooth.BluetoothGattDescriptor
+import androidx.annotation.RequiresApi
+import android.os.Build
+import android.annotation.SuppressLint
+import android.hardware.SensorEventListener
+import android.hardware.SensorManager
+import com.jjoe64.graphview.GraphView
+import android.hardware.SensorEvent
+import androidx.core.content.ContextCompat
+import androidx.core.app.ActivityCompat
+import se.kth.anderslm.movesense20.DeviceSensorActivity
+import com.jjoe64.graphview.series.LineGraphSeries
+import android.bluetooth.BluetoothAdapter
+import se.kth.anderslm.movesense20.uiutils.BtDeviceAdapter
+import androidx.recyclerview.widget.LinearLayoutManager
+import android.bluetooth.le.BluetoothLeScanner
+import android.bluetooth.le.ScanCallback
+import android.app.Activity
+import android.util.Log
+import se.kth.anderslm.movesense20.timeAndElevation
+import java.io.File
+import java.io.FileOutputStream
+import java.lang.Exception
 
-import com.google.gson.Gson;
-
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.ObjectOutputStream;
-import java.util.ArrayList;
-import java.util.List;
-
-import se.kth.anderslm.movesense20.models.AnglePoint;
-import se.kth.anderslm.movesense20.timeAndElevation;
-
-public class SerializeToFile {
-
-    private static final String LOG_TAG =
-            SerializeToFile.class.getSimpleName();
-
-    public static void writeToFile(List<AnglePoint> dataList,File folderPath, String fileName) {
-       /* List<Object> listOfData = new ArrayList<>();
+object SerializeToFile {
+    private val LOG_TAG = SerializeToFile::class.java.simpleName
+    fun writeToFile(dataList: List<AnglePoint>?, folderPath: File?, fileName: String?) {
+        /* List<Object> listOfData = new ArrayList<>();
         Log.d(LOG_TAG,"Time and elevation: " + timeAndElevation.getTime() + "s |" +  timeAndElevation.getElevation() + "°");
         listOfData.add(timeAndElevation.getTime());
         listOfData.add(timeAndElevation.getElevation());*/
-        Log.d(LOG_TAG,"Folder path: " + folderPath.getAbsolutePath());
+        Log.d(LOG_TAG, "Folder path: " + folderPath!!.absolutePath)
         try {
-            File myFilePath = new File(folderPath,fileName);
-            if(!myFilePath.exists()){
-                myFilePath.createNewFile();
+            val myFilePath = File(folderPath, fileName)
+            if (!myFilePath.exists()) {
+                myFilePath.createNewFile()
             }
-            Gson gson = new Gson();
-            String json = gson.toJson(dataList);
-            Log.d(LOG_TAG,json);
-            FileOutputStream fileOutputStream = new FileOutputStream(myFilePath);
-            fileOutputStream.write(json.getBytes());
-            fileOutputStream.close();
+            val gson = Gson()
+            val json = gson.toJson(dataList)
+            Log.d(LOG_TAG, json)
+            val fileOutputStream = FileOutputStream(myFilePath)
+            fileOutputStream.write(json.toByteArray())
+            fileOutputStream.close()
 
 //            Log.i(LOG_TAG,"The list of objects were successfully written to a file");
-
-        } catch (Exception ex) {
-            Log.e(LOG_TAG, "Exception thrown in writeToFile: " + ex.toString());
-            Log.d(LOG_TAG,"Could not write to file");
-            ex.printStackTrace();
+        } catch (ex: Exception) {
+            Log.e(LOG_TAG, "Exception thrown in writeToFile: $ex")
+            Log.d(LOG_TAG, "Could not write to file")
+            ex.printStackTrace()
         }
     }
 }
